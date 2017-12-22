@@ -5,8 +5,7 @@ CC = g++ -std=c++0x
 LINKER_FLAGS_64 = -lIntelPCM64 -lpthread -static
 LINKER_FLAGS_32 = -lIntelPCM64 -lpthread -static
 
-INTELPCM_INC = /home/stardica/Dropbox/CDA7919DoctoralResearch/IntelPCM/
-INTELPCM_LIB = /home/stardica/Dropbox/CDA7919DoctoralResearch/IntelPCM/
+CURRENT_DIR = $(shell pwd)
 
 #DEsim
 LIB_NAME_64 = "libIntelPCM64.a"
@@ -15,7 +14,7 @@ LIB_NAME_32 = "libIntelPCM32.a"
 all: intelpcm64 intelpcm32 pcmtest
 
 pcmtest:
-	$(CC) $(CC_FLAGS_64) ./samples/pcmtest.cpp -o ./samples/pcmtest -I$(INTELPCM_INC) -L$(INTELPCM_LIB) $(LINKER_FLAGS_64)
+	$(CC) $(CC_FLAGS_64) ./samples/pcmtest.cpp -o ./samples/pcmtest -I$(CURRENT_DIR) -L$(CURRENT_DIR) $(LINKER_FLAGS_64)
 
 
 intelpcm64: utils64.o pci64.o msr64.o cpucounters64.o client_bw64.o
